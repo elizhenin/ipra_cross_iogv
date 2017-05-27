@@ -8,12 +8,12 @@ exports.init = function(app) {
                 {
                     result = "Start case";
                     break;
-                };
+                }
             case 'admin':
                 {
                     result = "Admin case";
                     break;
-                };
+                }
             case 'user':
                 {
                     result = "User case";
