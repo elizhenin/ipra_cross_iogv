@@ -14,3 +14,4 @@ server/bin/
 server/include/
 server/lib/
 server/share/
+server/node_modules/
