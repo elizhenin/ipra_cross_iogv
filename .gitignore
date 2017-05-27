@@ -1,0 +1,16 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+client/lib/
+client/locales/
+client/icudtl.dat
+client/natives_blob.bin
+client/nw
+client/nw_100_percent.pak
+client/nw_200_percent.pak
+client/resources.pak
+client/snapshot_blob.bin
+#
+server/bin/
+server/include/
+server/lib/
+server/share/
