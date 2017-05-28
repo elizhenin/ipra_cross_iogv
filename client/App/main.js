@@ -1,6 +1,6 @@
 nw.Window.open('App/workflow1.html', {
-        width: 1024,
-        height: 768
+        width: 1280,
+        height: 900
     },
     function(win) {
 

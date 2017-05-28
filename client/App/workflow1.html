@@ -66,12 +66,13 @@
             }
         }
     </script>
+    <link rel="stylesheet" type="text/css" href="workflow.css" />
 </head>
 
-<body style="padding: 0px; margin:0px;background: url(workflow_background.jpg) center bottom fixed no-repeat;background-size: 100% 100%;" onunload="doOnUnload();">
+<body onunload="doOnUnload();">
 
-    <div style="width: 100vw; height: 100vh;">
-        <div id="workflow_main" style="width: 100%; height: 100%;"></div>
+    <div class="full-viewport">
+        <div id="workflow_main" class="full-size"></div>
     </div>
 
 
@@ -81,8 +82,8 @@
             doOnLoad();
 
             var params = {
-                win_w: 800,
-                win_h: 600,
+                win_w: 1024,
+                win_h: 768,
                 win_x: 10,
                 win_y: 10,
                 win_resize: true,
@@ -93,41 +94,26 @@
                 win_stick: false,
                 win_t: "Регистратура"
             };
-            var body = '<webview src="http://rmis36.ru" style="width:100vw; height:100vh"></webview>';
+            var body = '<webview src="http://rmis36.ru"></webview>';
             createWindow(params, body);
 
-            var params = {
-                win_w: 800,
-                win_h: 600,
-                win_x: 20,
-                win_y: 20,
-                win_resize: true,
-                win_move: true,
-                win_park: false,
-                win_close: false,
-                win_help: false,
-                win_stick: false,
-                win_t: "Портал ДЗ"
-            };
-            var body = '<webview src="http://zdrav36.ru" style="width:100vw; height:100vh"></webview>';
+            params.win_x += 30;
+            params.win_y += 30;
+            params.win_t = "Портал ДЗ";
+            var body = '<webview src="http://zdrav36.ru"></webview>';
             createWindow(params, body);
 
-            var params = {
-                win_w: 800,
-                win_h: 600,
-                win_x: 30,
-                win_y: 30,
-                win_resize: true,
-                win_move: true,
-                win_park: false,
-                win_close: false,
-                win_help: false,
-                win_stick: false,
-                win_t: "Почта ВЭП"
-            };
-            var body = '<webview src="https://mail.zdrav36.ru" style="width:100vw; height:100vh"></webview>';
+            params.win_x += 30;
+            params.win_y += 30;
+            params.win_t = "Почта ВЭП";
+            var body = '<webview src="https://mail.zdrav36.ru"></webview>';
             createWindow(params, body);
 
+            params.win_x += 30;
+            params.win_y += 30;
+            params.win_t = "Яндекс";
+            var body = '<webview src="https://yandex.ru"></webview>';
+            createWindow(params, body);
         });
     </script>
 
