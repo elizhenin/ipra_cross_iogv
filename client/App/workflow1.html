@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+    <meta charset="utf-8">
+    <title>ИС "ИПРА"</title>
+    <script src="vendor/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="vendor/dhtmlx/fonts/font_roboto/roboto.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/dhtmlx/dhtmlx.css" />
+    <script src="vendor/dhtmlx/dhtmlx.js"></script>
+    <script>
+        var dhxWins;
+
+        function doOnLoad() {
+            dhxWins = new dhtmlXWindows();
+            dhxWins.attachViewportTo("workflow_main");
+        }
+
+        var idPrefix = 1;
+
+        function createWindow(params, win_body) {
+            var p = 0;
+            dhxWins.forEachWindow(function() {
+                p++;
+            });
+            var id = "userWin " + (idPrefix++);
+            //
+            var w = Number(params.win_w);
+            var h = Number(params.win_h);
+            var x = Number(params.win_x);
+            var y = Number(params.win_y);
+            //
+            var win = dhxWins.createWindow(id, x, y, w, h);
+            win.setText(params.win_t);
+            //
+            // extended
+            if (!params.win_resize) {
+                win.denyResize();
+            }
+            if (!params.win_move) {
+                win.denyMove();
+            }
+            if (!params.win_park) {
+                win.denyPark();
+            }
+            if (params.win_close) {
+                win.button("close").disable();
+            }
+            if (params.win_help) {
+                win.button("help").show();
+            }
+            if (params.win_stick) {
+                win.button("stick").show();
+            }
+
+            win.attachHTMLString(win_body);
+
+            //
+        }
+
+        function doOnUnload() {
+            if (dhxWins != null && dhxWins.unload != null) {
+                dhxWins.unload();
+                dhxWins = null;
+            }
+        }
+    </script>
+</head>
+
+<body style="padding: 0px; margin:0px;background: url(workflow_background.jpg) center bottom fixed no-repeat;background-size: 100% 100%;" onunload="doOnUnload();">
+
+    <div style="width: 100vw; height: 100vh;">
+        <div id="workflow_main" style="width: 100%; height: 100%;"></div>
+    </div>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            doOnLoad();
+
+            var params = {
+                win_w: 800,
+                win_h: 600,
+                win_x: 10,
+                win_y: 10,
+                win_resize: true,
+                win_move: true,
+                win_park: false,
+                win_close: false,
+                win_help: false,
+                win_stick: false,
+                win_t: "Регистратура"
+            };
+            var body = '<webview src="http://rmis36.ru" style="width:100vw; height:100vh"></webview>';
+            createWindow(params, body);
+
+            var params = {
+                win_w: 800,
+                win_h: 600,
+                win_x: 20,
+                win_y: 20,
+                win_resize: true,
+                win_move: true,
+                win_park: false,
+                win_close: false,
+                win_help: false,
+                win_stick: false,
+                win_t: "Портал ДЗ"
+            };
+            var body = '<webview src="http://zdrav36.ru" style="width:100vw; height:100vh"></webview>';
+            createWindow(params, body);
+
+            var params = {
+                win_w: 800,
+                win_h: 600,
+                win_x: 30,
+                win_y: 30,
+                win_resize: true,
+                win_move: true,
+                win_park: false,
+                win_close: false,
+                win_help: false,
+                win_stick: false,
+                win_t: "Почта ВЭП"
+            };
+            var body = '<webview src="https://mail.zdrav36.ru" style="width:100vw; height:100vh"></webview>';
+            createWindow(params, body);
+
+        });
+    </script>
+
+
+</body>
+
+</html>

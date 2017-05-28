@@ -1,11 +1,11 @@
 {
-  "name": "ipra_client",
-  "version": "2.0.0",
-  "description": "ERROR: No README data found!",
-  "main": "App/main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "BSD-2-Clause"
+    "name": "ipra_client",
+    "version": "2.0.0",
+    "description": "ERROR: No README data found!",
+    "main": "App/main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "BSD-2-Clause"
 }
