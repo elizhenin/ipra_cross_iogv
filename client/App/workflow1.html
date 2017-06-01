@@ -12,6 +12,7 @@
     <script>
         var dhxWins;
 
+
         function doOnLoad() {
             dhxWins = new dhtmlXWindows();
             dhxWins.attachViewportTo("workflow_main");
@@ -67,6 +68,7 @@
         }
     </script>
     <link rel="stylesheet" type="text/css" href="workflow.css" />
+
 </head>
 
 <body onunload="doOnUnload();">
@@ -81,39 +83,134 @@
         $(document).ready(function() {
             doOnLoad();
 
-            var params = {
-                win_w: 1024,
-                win_h: 768,
-                win_x: 10,
-                win_y: 10,
-                win_resize: true,
-                win_move: true,
-                win_park: false,
-                win_close: false,
-                win_help: false,
-                win_stick: false,
-                win_t: "Регистратура"
+            var open_rmis36 = function() {
+                var params = {
+                    win_w: 1024,
+                    win_h: 768,
+                    win_x: 0,
+                    win_y: 0,
+                    win_resize: true,
+                    win_move: true,
+                    win_park: false,
+                    win_close: false,
+                    win_help: false,
+                    win_stick: false,
+                    win_t: "Регистратура"
+                };
+                var body = '<webview src="http://rmis36.ru"></webview>';
+                createWindow(params, body);
+            }
+
+            var open_zdrav36 = function() {
+                var params = {
+                    win_w: 1024,
+                    win_h: 768,
+                    win_x: 0,
+                    win_y: 0,
+                    win_resize: true,
+                    win_move: true,
+                    win_park: false,
+                    win_close: false,
+                    win_help: false,
+                    win_stick: false,
+                    win_t: "Регистратура"
+                };
+                params.win_t = "Портал ДЗ";
+                var body = '<webview src="http://zdrav36.ru"></webview>';
+                createWindow(params, body);
+            }
+
+            var open_mail = function() {
+                var params = {
+                    win_w: 1024,
+                    win_h: 768,
+                    win_x: 0,
+                    win_y: 0,
+                    win_resize: true,
+                    win_move: true,
+                    win_park: false,
+                    win_close: false,
+                    win_help: false,
+                    win_stick: false,
+                    win_t: "Регистратура"
+                };
+                params.win_t = "Почта ВЭП";
+                var body = '<webview src="https://mail.zdrav36.ru"></webview>';
+                createWindow(params, body);
+            }
+
+            var open_ipra = function() {
+                var params = {
+                    win_w: 1024,
+                    win_h: 768,
+                    win_x: 0,
+                    win_y: 0,
+                    win_resize: true,
+                    win_move: true,
+                    win_park: false,
+                    win_close: false,
+                    win_help: false,
+                    win_stick: false,
+                    win_t: "Регистратура"
+                };
+                params.win_t = "ИПРА";
+                var body = '<webview src="http://10.36.0.230"></webview>';
+                createWindow(params, body);
+            }
+
+            var mainwindow_menu = new nw.Menu({
+                type: 'menubar'
+            });
+
+            var submenu = new nw.Menu();
+            item = new nw.MenuItem({
+                label: 'Регистратура',
+                type: "normal",
+                icon: "img/icon.png"
+            });
+            item.click = function() {
+                open_rmis36()
             };
-            var body = '<webview src="http://rmis36.ru"></webview>';
-            createWindow(params, body);
+            submenu.append(item);
 
-            params.win_x += 30;
-            params.win_y += 30;
-            params.win_t = "Портал ДЗ";
-            var body = '<webview src="http://zdrav36.ru"></webview>';
-            createWindow(params, body);
+            item = new nw.MenuItem({
+                label: 'Портал ДЗ',
+                type: "normal",
+                icon: "img/icon.png"
+            });
+            item.click = function() {
+                open_zdrav36()
+            };
+            submenu.append(item);
 
-            params.win_x += 30;
-            params.win_y += 30;
-            params.win_t = "Почта ВЭП";
-            var body = '<webview src="https://mail.zdrav36.ru"></webview>';
-            createWindow(params, body);
+            item = new nw.MenuItem({
+                label: 'Почта ВЭП',
+                type: "normal",
+                icon: "img/icon.png"
+            });
+            item.click = function() {
+                open_mail()
+            };
+            submenu.append(item);
 
-            params.win_x += 30;
-            params.win_y += 30;
-            params.win_t = "Яндекс";
-            var body = '<webview src="https://yandex.ru"></webview>';
-            createWindow(params, body);
+            item = new nw.MenuItem({
+                label: 'ИПРА',
+                type: "normal",
+                icon: "img/icon.png"
+            });
+            item.click = function() {
+                open_ipra()
+            };
+            submenu.append(item);
+
+            // the menu item appended should have a submenu
+            mainwindow_menu.append(new nw.MenuItem({
+                label: 'Ресурсы',
+                submenu: submenu
+            }));
+            nw.Window.get().menu = mainwindow_menu;
+
+
         });
     </script>
 
